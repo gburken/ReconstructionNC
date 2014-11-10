@@ -2,15 +2,234 @@
 network  {
   watchlist = ""
 }
-module View3D {
+module Info {
   internal  {
-    frame = "1097 173 144 56"
+    frame = "649 325 64 56"
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "156 225 943 645"
+        geometry = "683 442 568 375"
+        sizeHint = "568 375"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = Info3
+    bypassIndex = -1
+    inPlaceIndex = -1
+  }
+}
+module itkImageFileReader {
+  internal  {
+    frame = "689 597 144 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "571 30 299 395"
+        sizeHint = "299 395"
+        wasOpen = yes
+      }
+    }
+  }
+  fields  {
+    instanceName = itkImageFileReader4
+    fileDataType = float
+    correctSubVoxelShift = FALSE
+    fileDimension = 3
+    info = "Loading okay."
+    numDims = 3
+    fileType = Binary
+    componentType = float
+    pixelType = SCALAR
+    loaderType = MetaImageIO
+    outputMetaDataStr = "ITK_InputFilterName : MetaImageIO
+"
+    unresolvedFileName = D:/Development/Intermediate64/ReconstructionNC/cBlurrer.mhd
+  }
+}
+module OrthoView2D {
+  internal  {
+    frame = "741 181 120 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "304 374 400 430"
+        sizeHint = "400 430"
+        wasOpen = no
+      }
+      window Settings {
+        geometry = "275 345 352 551"
+        sizeHint = "352 551"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = OrthoView2D3
+    inventorInputOn = TRUE
+    inventorOutputOn = FALSE
+    synchronizePosition = TRUE
+    layout = LAYOUT_CUBE_EQUAL
+    filterMode = FILTER_LINEAR
+    synchronizeZoom = TRUE
+    synchronizePanning = FALSE
+    useGlobalInputImage = TRUE
+    snapToCenter = FALSE
+    alternCubeLayout = FALSE
+    timePoint = 0
+    useManagedInteraction = FALSE
+    enableSlicing = TRUE
+    borderOn = TRUE
+    borderColor = "0.899999976158142 0.899999976158142 0.899999976158142"
+    grayWidth = 0.9999972
+    grayCenter = 0.4999986
+    annotationOn = TRUE
+    annotationSizeMode = ANNO_SHOW_DETAILED
+    annotationFontSize = ANNO_SIZE_AUTO
+    valueHighPrecision = TRUE
+    annoCoords = World
+    showCurrentPos = TRUE
+    worldPosition = "556.974975585938 150.40592956543 -618.013977050781"
+    coloredMode = FALSE
+  }
+}
+module View3D {
+  internal  {
+    frame = "913 133 144 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "346 473 943 645"
         sizeHint = "943 645"
         wasOpen = yes
+      }
+      window _automatic {
+        geometry = "210 378 500 600"
+        sizeHint = "260 223"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = View3D4
+    autoViewAll = TRUE
+    inventorInputOn = TRUE
+    inventorOutputOn = FALSE
+    lutType = Ramp
+    currentTimePoint = 0
+    staticSamplingRate = 1
+    quality = 1
+    lutEditorColorPoints = "[ 0 0 0 0, 4095 1 1 1 ]"
+    lutEditorAlphaPoints = "[ 0 0, 4095 1 ]"
+    lutEditorRelativeLut = FALSE
+    lutEditorColorInterpolation = InterpolateRGB
+    lutEditorAlphaFactor = 1
+    orientationProjectionType = PERSPECTIVE
+    orientationLocation = LOWER_RIGHT
+    orientationOn = TRUE
+    orientationModel = CUBE
+    greyCenter = 0.1824999
+    greyWidth = 0.38999972
+    alphaFactor = 1
+    colorFactor = "1 1 1"
+    camType = TRUE
+    camPosition = "-133.244079589844 677.223083496094 -1378.91162109375"
+    camOrientation = "0.978791892528534 0.142256543040276 -0.147409200668335 3.43005967140198"
+    initialCameraOrientation = CAMERA_KEEP_AS_IS
+    camFar = 1687.7129
+    camNear = 766.01672
+    camFocal = 1226.4053
+    camHeight = 0.78539801
+    decoration = FALSE
+    annotations = TRUE
+    background = TRUE
+    mode = VolumeRendering
+    interactiveQuality = Medium
+  }
+  internalFields  {
+    renderer.gradientQuality = GradientQualityAutomatic
+    renderer.enhancementAlphaMix = 0.25
+    renderer.boundaryEnhancement = FALSE
+    renderer.boundaryEnhancementFactor = 1
+    renderer.boundaryEnhancementExponent = 1
+    renderer.boundaryEnhancementGradientBias = 0
+    renderer.silhouetteEnhancement = FALSE
+    renderer.silhouetteEnhancementExponent = 1
+    renderer.silhouetteEnhancementFactor = 1
+    renderer.toneShading = FALSE
+    renderer.toneShadingWarmColor = "0.67451000213623 0.533333003520966 0.141176000237465"
+    renderer.toneShadingColdColor = "0 0 0.400000005960464"
+    renderer.toneShadingWarmDiffuse = 0.60000002
+    renderer.toneShadingColdDiffuse = 0.2
+    renderer.toneShadingAngle = 45
+    renderer.materialAmbient = 0.60000002
+    renderer.materialDiffuse = 1
+    renderer.materialSpecular = 1
+    renderer.materialSpecularity = 32
+    renderer.light1Enabled = TRUE
+    renderer.light1DiffuseIntensity = 1
+    renderer.light1SpecularIntensity = 1
+    renderer.light1Color = "1 1 1"
+    renderer.light1PolarPhi = 45
+    renderer.light1PolarRho = 0
+    renderer.light2Enabled = FALSE
+    renderer.light2DiffuseIntensity = 1
+    renderer.light2SpecularIntensity = 1
+    renderer.light2Color = "1 1 1"
+    renderer.light2PolarPhi = 0
+    renderer.light2PolarRho = 0
+    renderer.light3Enabled = FALSE
+    renderer.light3DiffuseIntensity = 1
+    renderer.light3SpecularIntensity = 1
+    renderer.light3Color = "1 1 1"
+    renderer.light3PolarPhi = -45
+    renderer.light3PolarRho = 0
+    renderer.sizeOutputX = 349
+    renderer.sizeOutputY = 628
+    renderer.sizeOutputZ = 716
+    renderer.subVolumeStartX = 0
+    renderer.subVolumeStartY = 0
+    renderer.subVolumeStartZ = 0
+    renderer.subVolumeEndX = 349
+    renderer.subVolumeEndY = 628
+    renderer.subVolumeEndZ = 716
+    clip.hideGeometry = FALSE
+    clip.on = FALSE
+    clip.left = FALSE
+    clip.right = FALSE
+    clip.top = FALSE
+    clip.bottom = FALSE
+    clip.rear = FALSE
+    clip.front = FALSE
+    clip.translation0 = "1 0 0"
+    clip.translation1 = "-1 0 0"
+    clip.translation2 = "0 1 0"
+    clip.translation3 = "0 -1 0"
+    clip.translation4 = "0 0 1"
+    clip.translation5 = "0 0 -1"
+    clip.rotation0 = "0 0 0.999999940395355 1.57079994678497"
+    clip.rotation1 = "0 0 -0.999999940395355 1.57079994678497"
+    clip.rotation2 = "0 0 -1 3.1415901184082"
+    clip.rotation3 = "0 0 1 0"
+    clip.rotation4 = "-0.999999940395355 0 0 1.57079994678497"
+    clip.rotation5 = "0.999999940395355 0 0 1.57079994678497"
+  }
+}
+module View3D {
+  internal  {
+    frame = "1081 125 144 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "715 453 943 645"
+        sizeHint = "943 645"
+        wasOpen = no
+      }
+      window _automatic {
+        geometry = "724 378 500 600"
+        sizeHint = "260 223"
+        wasOpen = no
       }
     }
   }
@@ -32,16 +251,138 @@ module View3D {
     orientationLocation = LOWER_RIGHT
     orientationOn = TRUE
     orientationModel = CUBE
-    greyCenter = 0.20749973
-    greyWidth = 0.96749979
+    greyCenter = 0.28000009
+    greyWidth = 0.65250033
     alphaFactor = 1
     colorFactor = "1 1 1"
     camType = TRUE
-    camPosition = "33.9455871582031 755.846801757812 843.3076171875"
-    camOrientation = "0.426330536603928 -0.378354161977768 -0.821638882160187 4.16559410095215"
+    camPosition = "-133.244079589844 677.223083496094 -1378.91162109375"
+    camOrientation = "0.978791952133179 0.142256543040276 -0.147409200668335 3.43005967140198"
     initialCameraOrientation = CAMERA_KEEP_AS_IS
-    camFar = 1772.5236
-    camNear = 776.36285
+    camFar = 1835.912
+    camNear = 1001.77
+    camFocal = 1226.4053
+    camHeight = 0.78539801
+    decoration = FALSE
+    annotations = TRUE
+    background = TRUE
+    mode = VolumeRendering
+    interactiveQuality = Medium
+  }
+  internalFields  {
+    renderer.gradientQuality = GradientQualityAutomatic
+    renderer.enhancementAlphaMix = 0.25
+    renderer.boundaryEnhancement = FALSE
+    renderer.boundaryEnhancementFactor = 1
+    renderer.boundaryEnhancementExponent = 1
+    renderer.boundaryEnhancementGradientBias = 0
+    renderer.silhouetteEnhancement = FALSE
+    renderer.silhouetteEnhancementExponent = 1
+    renderer.silhouetteEnhancementFactor = 1
+    renderer.toneShading = FALSE
+    renderer.toneShadingWarmColor = "0.67451000213623 0.533333003520966 0.141176000237465"
+    renderer.toneShadingColdColor = "0 0 0.400000005960464"
+    renderer.toneShadingWarmDiffuse = 0.60000002
+    renderer.toneShadingColdDiffuse = 0.2
+    renderer.toneShadingAngle = 45
+    renderer.materialAmbient = 0.60000002
+    renderer.materialDiffuse = 1
+    renderer.materialSpecular = 1
+    renderer.materialSpecularity = 32
+    renderer.light1Enabled = TRUE
+    renderer.light1DiffuseIntensity = 1
+    renderer.light1SpecularIntensity = 1
+    renderer.light1Color = "1 1 1"
+    renderer.light1PolarPhi = 45
+    renderer.light1PolarRho = 0
+    renderer.light2Enabled = FALSE
+    renderer.light2DiffuseIntensity = 1
+    renderer.light2SpecularIntensity = 1
+    renderer.light2Color = "1 1 1"
+    renderer.light2PolarPhi = 0
+    renderer.light2PolarRho = 0
+    renderer.light3Enabled = FALSE
+    renderer.light3DiffuseIntensity = 1
+    renderer.light3SpecularIntensity = 1
+    renderer.light3Color = "1 1 1"
+    renderer.light3PolarPhi = -45
+    renderer.light3PolarRho = 0
+    renderer.sizeOutputX = 349
+    renderer.sizeOutputY = 628
+    renderer.sizeOutputZ = 716
+    renderer.subVolumeStartX = 0
+    renderer.subVolumeStartY = 0
+    renderer.subVolumeStartZ = 0
+    renderer.subVolumeEndX = 349
+    renderer.subVolumeEndY = 628
+    renderer.subVolumeEndZ = 716
+    clip.hideGeometry = FALSE
+    clip.on = FALSE
+    clip.left = FALSE
+    clip.right = FALSE
+    clip.top = FALSE
+    clip.bottom = FALSE
+    clip.rear = FALSE
+    clip.front = FALSE
+    clip.translation0 = "1 0 0"
+    clip.translation1 = "-1 0 0"
+    clip.translation2 = "0 1 0"
+    clip.translation3 = "0 -1 0"
+    clip.translation4 = "0 0 1"
+    clip.translation5 = "0 0 -1"
+    clip.rotation0 = "0 0 0.999999940395355 1.57079994678497"
+    clip.rotation1 = "0 0 -0.999999940395355 1.57079994678497"
+    clip.rotation2 = "0 0 -1 3.1415901184082"
+    clip.rotation3 = "0 0 1 0"
+    clip.rotation4 = "-0.999999940395355 0 0 1.57079994678497"
+    clip.rotation5 = "0.999999940395355 0 0 1.57079994678497"
+  }
+}
+module View3D {
+  internal  {
+    frame = "1345 309 144 56"
+    moduleGroupName = ""
+    windows  {
+      window _default {
+        geometry = "634 488 943 645"
+        sizeHint = "943 645"
+        wasOpen = no
+      }
+      window _automatic {
+        geometry = "1231 338 500 600"
+        sizeHint = "260 223"
+        wasOpen = no
+      }
+    }
+  }
+  fields  {
+    instanceName = View3D2
+    autoViewAll = TRUE
+    inventorInputOn = TRUE
+    inventorOutputOn = FALSE
+    lutType = Ramp
+    currentTimePoint = 0
+    staticSamplingRate = 1
+    quality = 1
+    lutEditorColorPoints = "[ 0 0 0 0, 4095 1 1 1 ]"
+    lutEditorAlphaPoints = "[ 0 0, 4095 1 ]"
+    lutEditorRelativeLut = FALSE
+    lutEditorColorInterpolation = InterpolateRGB
+    lutEditorAlphaFactor = 1
+    orientationProjectionType = PERSPECTIVE
+    orientationLocation = LOWER_RIGHT
+    orientationOn = TRUE
+    orientationModel = CUBE
+    greyCenter = 0.49000049
+    greyWidth = 0.87250006
+    alphaFactor = 1
+    colorFactor = "1 1 1"
+    camType = TRUE
+    camPosition = "627.743774414062 -192.428253173828 -978.489501953125"
+    camOrientation = "0.612009644508362 0.775443851947784 0.155341997742653 2.90211987495422"
+    initialCameraOrientation = CAMERA_KEEP_AS_IS
+    camFar = 1719.0535
+    camNear = 829.72534
     camFocal = 1273.9463
     camHeight = 0.78539801
     decoration = FALSE
@@ -119,123 +460,6 @@ module View3D {
     clip.rotation5 = "0.999999940395355 0 0 1.57079994678497"
   }
 }
-module View3D {
-  internal  {
-    frame = "1345 349 144 56"
-    moduleGroupName = ""
-    windows  {
-      window _default {
-        geometry = "490 313 943 645"
-        sizeHint = "943 645"
-        wasOpen = no
-      }
-    }
-  }
-  fields  {
-    instanceName = View3D2
-    autoViewAll = TRUE
-    inventorInputOn = TRUE
-    inventorOutputOn = FALSE
-    lutType = Ramp
-    currentTimePoint = 0
-    staticSamplingRate = 1
-    quality = 1
-    lutEditorColorPoints = "[ 0 0 0 0, 4095 1 1 1 ]"
-    lutEditorAlphaPoints = "[ 0 0, 4095 1 ]"
-    lutEditorRelativeLut = FALSE
-    lutEditorColorInterpolation = InterpolateRGB
-    lutEditorAlphaFactor = 1
-    orientationProjectionType = PERSPECTIVE
-    orientationLocation = LOWER_RIGHT
-    orientationOn = TRUE
-    orientationModel = CUBE
-    greyCenter = 0.52749979
-    greyWidth = 0.90750003
-    alphaFactor = 1
-    colorFactor = "1 1 1"
-    camType = TRUE
-    camPosition = "1383.63500976562 -48.4301452636719 4.50262451171875"
-    camOrientation = "0.712330162525177 -0.480325907468796 0.511735022068024 4.11694097518921"
-    initialCameraOrientation = CAMERA_KEEP_AS_IS
-    camFar = 1589.2144
-    camNear = 955.23987
-    camFocal = 1271.9116
-    camHeight = 0.78539801
-    decoration = FALSE
-    annotations = TRUE
-    background = TRUE
-    mode = VolumeRendering
-    interactiveQuality = Medium
-  }
-  internalFields  {
-    renderer.gradientQuality = GradientQualityAutomatic
-    renderer.enhancementAlphaMix = 0.25
-    renderer.boundaryEnhancement = FALSE
-    renderer.boundaryEnhancementFactor = 1
-    renderer.boundaryEnhancementExponent = 1
-    renderer.boundaryEnhancementGradientBias = 0
-    renderer.silhouetteEnhancement = FALSE
-    renderer.silhouetteEnhancementExponent = 1
-    renderer.silhouetteEnhancementFactor = 1
-    renderer.toneShading = FALSE
-    renderer.toneShadingWarmColor = "0.67451000213623 0.533333003520966 0.141176000237465"
-    renderer.toneShadingColdColor = "0 0 0.400000005960464"
-    renderer.toneShadingWarmDiffuse = 0.60000002
-    renderer.toneShadingColdDiffuse = 0.2
-    renderer.toneShadingAngle = 45
-    renderer.materialAmbient = 0.60000002
-    renderer.materialDiffuse = 1
-    renderer.materialSpecular = 1
-    renderer.materialSpecularity = 32
-    renderer.light1Enabled = TRUE
-    renderer.light1DiffuseIntensity = 1
-    renderer.light1SpecularIntensity = 1
-    renderer.light1Color = "1 1 1"
-    renderer.light1PolarPhi = 45
-    renderer.light1PolarRho = 0
-    renderer.light2Enabled = FALSE
-    renderer.light2DiffuseIntensity = 1
-    renderer.light2SpecularIntensity = 1
-    renderer.light2Color = "1 1 1"
-    renderer.light2PolarPhi = 0
-    renderer.light2PolarRho = 0
-    renderer.light3Enabled = FALSE
-    renderer.light3DiffuseIntensity = 1
-    renderer.light3SpecularIntensity = 1
-    renderer.light3Color = "1 1 1"
-    renderer.light3PolarPhi = -45
-    renderer.light3PolarRho = 0
-    renderer.sizeOutputX = 400
-    renderer.sizeOutputY = 641
-    renderer.sizeOutputZ = 732
-    renderer.subVolumeStartX = 0
-    renderer.subVolumeStartY = 0
-    renderer.subVolumeStartZ = 0
-    renderer.subVolumeEndX = 400
-    renderer.subVolumeEndY = 641
-    renderer.subVolumeEndZ = 732
-    clip.hideGeometry = FALSE
-    clip.on = FALSE
-    clip.left = FALSE
-    clip.right = FALSE
-    clip.top = FALSE
-    clip.bottom = FALSE
-    clip.rear = FALSE
-    clip.front = FALSE
-    clip.translation0 = "1 0 0"
-    clip.translation1 = "-1 0 0"
-    clip.translation2 = "0 1 0"
-    clip.translation3 = "0 -1 0"
-    clip.translation4 = "0 0 1"
-    clip.translation5 = "0 0 -1"
-    clip.rotation0 = "0 0 0.999999940395355 1.57079994678497"
-    clip.rotation1 = "0 0 -0.999999940395355 1.57079994678497"
-    clip.rotation2 = "0 0 -1 3.1415901184082"
-    clip.rotation3 = "0 0 1 0"
-    clip.rotation4 = "-0.999999940395355 0 0 1.57079994678497"
-    clip.rotation5 = "0.999999940395355 0 0 1.57079994678497"
-  }
-}
 module Info {
   internal  {
     frame = "1169 445 64 56"
@@ -260,7 +484,7 @@ module itkImageFileReader {
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "1151 137 299 395"
+        geometry = "877 82 299 395"
         sizeHint = "299 395"
         wasOpen = yes
       }
@@ -268,7 +492,7 @@ module itkImageFileReader {
   }
   fields  {
     instanceName = itkImageFileReader3
-    fileDataType = float
+    fileDataType = int8
     correctSubVoxelShift = FALSE
     fileDimension = 3
     info = "Loading okay."
@@ -284,7 +508,7 @@ module itkImageFileReader {
 }
 module OrthoView2D {
   internal  {
-    frame = "1261 301 120 56"
+    frame = "1197 301 120 56"
     moduleGroupName = ""
     windows  {
       window _default {
@@ -316,15 +540,15 @@ module OrthoView2D {
     enableSlicing = TRUE
     borderOn = TRUE
     borderColor = "0.899999976158142 0.899999976158142 0.899999976158142"
-    grayWidth = 254
-    grayCenter = 127
+    grayWidth = 255
+    grayCenter = -0.5
     annotationOn = TRUE
     annotationSizeMode = ANNO_SHOW_DETAILED
     annotationFontSize = ANNO_SIZE_AUTO
     valueHighPrecision = TRUE
     annoCoords = Voxel
     showCurrentPos = TRUE
-    worldPosition = "270.031219482422 -368.065002441406 164.623352050781"
+    worldPosition = "222.218780517578 -375.3623046875 113.496002197266"
     coloredMode = FALSE
   }
 }
@@ -334,9 +558,9 @@ module OrthoView2D {
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "767 414 400 430"
+        geometry = "304 374 400 430"
         sizeHint = "400 430"
-        wasOpen = yes
+        wasOpen = no
       }
       window Settings {
         geometry = "275 345 352 551"
@@ -362,25 +586,25 @@ module OrthoView2D {
     enableSlicing = TRUE
     borderOn = TRUE
     borderColor = "0.899999976158142 0.899999976158142 0.899999976158142"
-    grayWidth = 0.99993855
-    grayCenter = 0.49996927
+    grayWidth = 1
+    grayCenter = 0.5
     annotationOn = TRUE
     annotationSizeMode = ANNO_SHOW_DETAILED
     annotationFontSize = ANNO_SIZE_AUTO
     valueHighPrecision = TRUE
     annoCoords = World
     showCurrentPos = TRUE
-    worldPosition = "323.2275390625 -180.536010742188 -166.718017578125"
+    worldPosition = "707.411071777344 150.40592956543 -618.013977050781"
     coloredMode = FALSE
   }
 }
 module itkImageFileReader {
   internal  {
-    frame = "881 453 144 56"
+    frame = "913 597 144 56"
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "1151 137 299 395"
+        geometry = "1101 30 299 395"
         sizeHint = "299 395"
         wasOpen = no
       }
@@ -399,7 +623,7 @@ module itkImageFileReader {
     loaderType = MetaImageIO
     outputMetaDataStr = "ITK_InputFilterName : MetaImageIO
 "
-    unresolvedFileName = D:/Development/Intermediate64/ReconstructionNC/cBlurrer.mhd
+    unresolvedFileName = D:/Development/Intermediate64/ReconstructionNC/cBlurrer2.mhd
   }
 }
 module OrthoOverlayViewer {
@@ -472,15 +696,15 @@ module OrthoView2D {
     enableSlicing = TRUE
     borderOn = TRUE
     borderColor = "0.899999976158142 0.899999976158142 0.899999976158142"
-    grayWidth = 168.04053
-    grayCenter = 84.020264
+    grayWidth = 94.317245
+    grayCenter = 47.158623
     annotationOn = TRUE
     annotationSizeMode = ANNO_SHOW_DETAILED
     annotationFontSize = ANNO_SIZE_AUTO
     valueHighPrecision = TRUE
     annoCoords = World
     showCurrentPos = TRUE
-    worldPosition = "169.5 247.551025390625 -356.122467041016"
+    worldPosition = "169.5 10.46399974823 -167.503997802734"
     coloredMode = FALSE
   }
 }
@@ -516,8 +740,13 @@ module View3D {
     moduleGroupName = ""
     windows  {
       window _default {
-        geometry = "496 307 943 645"
+        geometry = "66 434 943 645"
         sizeHint = "943 645"
+        wasOpen = no
+      }
+      window _automatic {
+        geometry = "416 350 500 600"
+        sizeHint = "260 223"
         wasOpen = no
       }
     }
@@ -540,17 +769,17 @@ module View3D {
     orientationLocation = LOWER_RIGHT
     orientationOn = TRUE
     orientationModel = CUBE
-    greyCenter = 0.36999971
-    greyWidth = 0.65249968
+    greyCenter = 0.32249954
+    greyWidth = 0.59999979
     alphaFactor = 1
     colorFactor = "1 1 1"
     camType = TRUE
-    camPosition = "47.4324188232422 186.084320068359 -400.904876708984"
-    camOrientation = "0.15410079061985 -0.865878760814667 -0.475927472114563 4.61404848098755"
+    camPosition = "347.926910400391 -154.083038330078 -460.403076171875"
+    camOrientation = "-0.989713191986084 0.0853244811296463 -0.114836499094963 4.35164308547974"
     initialCameraOrientation = CAMERA_KEEP_AS_IS
-    camFar = 423.34854
-    camNear = 200.04057
-    camFocal = 311.58328
+    camFar = 473.80505
+    camNear = 239.44798
+    camFocal = 358.93527
     camHeight = 0.78539801
     decoration = FALSE
     annotations = TRUE
@@ -596,14 +825,14 @@ module View3D {
     renderer.light3Color = "1 1 1"
     renderer.light3PolarPhi = -45
     renderer.light3PolarRho = 0
-    renderer.sizeOutputX = 267
-    renderer.sizeOutputY = 311
+    renderer.sizeOutputX = 357
+    renderer.sizeOutputY = 357
     renderer.sizeOutputZ = 311
     renderer.subVolumeStartX = 0
     renderer.subVolumeStartY = 0
     renderer.subVolumeStartZ = 0
-    renderer.subVolumeEndX = 267
-    renderer.subVolumeEndY = 311
+    renderer.subVolumeEndX = 357
+    renderer.subVolumeEndY = 357
     renderer.subVolumeEndZ = 311
     clip.hideGeometry = FALSE
     clip.on = FALSE
@@ -653,7 +882,7 @@ module View2D {
       window _default {
         geometry = "1398 77 400 400"
         sizeHint = "400 400"
-        wasOpen = no
+        wasOpen = yes
       }
     }
   }
@@ -662,7 +891,7 @@ module View2D {
     inventorInputOn = TRUE
     inventorOutputOn = FALSE
     view2DExtensionsOn = TRUE
-    startSlice = 0
+    startSlice = 194
     numSlices = 1
     numXSlices = 1
     sliceStep = 1
@@ -687,8 +916,8 @@ module View2D {
     plane = "0 0 1 0"
     useShaders = TRUE
     useManagedInteraction = FALSE
-    lutCenter = 44.642487
-    lutWidth = 246.67493
+    lutCenter = 127
+    lutWidth = 247
     annotationOn = TRUE
     annotationMode = ANNO_MODE_AUTO
     annotationSizeMode = ANNO_SHOW_DETAILED
@@ -729,7 +958,7 @@ module itkImageFileReader {
     loaderType = MetaImageIO
     outputMetaDataStr = "ITK_InputFilterName : MetaImageIO
 "
-    unresolvedFileName = $(HOME)/PlusApp-2.1.2.3381-Win32/data/testVolume3.mha
+    unresolvedFileName = $(HOME)/PlusApp-2.1.2.3381-Win32/data/ventricleReconstruction.mha
   }
 }
 module View3D {
@@ -768,7 +997,7 @@ module View3D {
     colorFactor = "1 1 1"
     camType = TRUE
     camPosition = "-1022.9326171875 392.886535644531 -581.24072265625"
-    camOrientation = "-0.546590983867645 0.652320444583893 0.525087118148804 4.02469491958618"
+    camOrientation = "-0.546590924263 0.652320384979248 0.525087058544159 4.02469491958618"
     initialCameraOrientation = CAMERA_KEEP_AS_IS
     camFar = 1647.3038
     camNear = 866.58051
@@ -818,15 +1047,15 @@ module View3D {
     renderer.light3Color = "1 1 1"
     renderer.light3PolarPhi = -45
     renderer.light3PolarRho = 0
-    renderer.sizeOutputX = 600
-    renderer.sizeOutputY = 600
-    renderer.sizeOutputZ = 600
+    renderer.sizeOutputX = 401
+    renderer.sizeOutputY = 642
+    renderer.sizeOutputZ = 733
     renderer.subVolumeStartX = 0
     renderer.subVolumeStartY = 0
     renderer.subVolumeStartZ = 0
-    renderer.subVolumeEndX = 600
-    renderer.subVolumeEndY = 600
-    renderer.subVolumeEndZ = 600
+    renderer.subVolumeEndX = 401
+    renderer.subVolumeEndY = 642
+    renderer.subVolumeEndZ = 733
     clip.hideGeometry = FALSE
     clip.on = FALSE
     clip.left = FALSE
@@ -878,8 +1107,18 @@ module itkImageFileReader {
   }
 }
 connections  {
+  OrthoView2D3.image = itkImageFileReader4.output0
+  View3D4.inImage = itkImageFileReader4.output0
   View3D3.inImage = itkImageFileReader2.output0
+  View3D3.camPosition = View3D4.camPosition
+  View3D3.camOrientation = View3D4.camOrientation
   View3D2.inImage = itkImageFileReader3.output0
+  View3D2.camPosition = View3D1.camPosition
+  View3D2.camOrientation = View3D1.camOrientation
+  View3D2.camFar = View3D1.camFar
+  View3D2.camNear = View3D1.camNear
+  View3D2.camFocal = View3D1.camFocal
+  View3D2.camHeight = View3D1.camHeight
   Info2.input0 = itkImageFileReader3.output0
   OrthoView2D2.image = itkImageFileReader3.output0
   OrthoView2D1.image = itkImageFileReader2.output0

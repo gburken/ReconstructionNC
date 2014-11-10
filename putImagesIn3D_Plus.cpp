@@ -16,6 +16,9 @@
 #include <itkDiscreteGaussianImageFilter.h>
 #include <itkCastImageFilter.h>
 #include <itkDivideImageFilter.h>
+#include <vtkXMLDataParser.h>
+#include <PlusXmlUtils.h>
+#include <itkCompositeTransform.h>
 
 // read plus file
 #include <iostream>
@@ -25,7 +28,7 @@
 static double pi = 3.14159265359;
 itk::Euler3DTransform<double>::MatrixType vtkMatrix4x4ToItkRotMatrix( vtkSmartPointer<vtkMatrix4x4> transformMatrix );
 itk::Euler3DTransform<double>::OffsetType vtkMatrix4x4ToItkOffset( vtkSmartPointer<vtkMatrix4x4> transformMatrix );
-std::vector<double> computeExtent( vtkSmartPointer<vtkTrackedFrameList> frames );
+std::vector<double> computeExtent(  vtkSmartPointer<vtkTrackedFrameList> frames, vtkSmartPointer<vtkMatrix4x4> globalTransformMatrix  );
 
 int main(int argc, char** argv)
 {
@@ -36,14 +39,23 @@ int main(int argc, char** argv)
   typedef itk::Image<PixelType, 3>  Char3dImageType;
     
   // reading Plus images
-  std::string plusFileName = "C:/Users/ahaak/PlusApp-2.1.2.3381-Win32/data/initalShortSweep3.mha";
+  std::string plusFileName = "C:/Users/ahaak/PlusApp-2.1.2.3381-Win32/data/initalShortSweep3";
   vtkSmartPointer<vtkTrackedFrameList> frames = vtkSmartPointer<vtkTrackedFrameList>::New();
-  frames->ReadFromSequenceMetafile( plusFileName.c_str() );
+  frames->ReadFromSequenceMetafile( (plusFileName + ".mha").c_str() );
   int numFrames = frames->GetNumberOfTrackedFrames();
   TrackedFrame* frame = frames->GetTrackedFrame( 0 );
-  std::vector<double> extendVolume = computeExtent( frames );
-   
+  vtkSmartPointer<vtkMatrix4x4> ProbeToImageTransform = vtkSmartPointer<vtkMatrix4x4>::New();
+  double aError;
+  std::string aDate;
+  
+  vtkSmartPointer<vtkXMLDataParser> xmlReader = vtkSmartPointer<vtkXMLDataParser>::New();
+  xmlReader->SetFileName( (plusFileName + "_config.xml").c_str() );
+  xmlReader->Parse();
+  vtkSmartPointer<vtkXMLDataElement> config = xmlReader->GetRootElement();
+  vtkSmartPointer<vtkPlusConfig> utility = vtkSmartPointer<vtkPlusConfig>::New();
+  utility->ReadTransformToCoordinateDefinition( config, "Image", "Probe", ProbeToImageTransform, &aError, &aDate );
   // create the output size, spacing etc.
+  std::vector<double> extendVolume = computeExtent( frames, ProbeToImageTransform );
   typedef itk::Image<float, 3> Float3dImageType;
   Float3dImageType::IndexType outIndex;
   outIndex.Fill( 0 );
@@ -59,9 +71,18 @@ int main(int argc, char** argv)
   Float3dImageType::SpacingType outSpacing;
   outSpacing.Fill( 1.0 );
   Float3dImageType::PointType outOrigin;
-  outOrigin[0] = 100;//extendVolume[0]*1;
-  outOrigin[1] = extendVolume[2]*1;
-  outOrigin[2] = extendVolume[4]*1;
+  outOrigin[0] = extendVolume[0]; //
+  outOrigin[1] = extendVolume[2];
+  outOrigin[2] = extendVolume[4];
+
+
+  //outOrigin[0] = extendVolume[0]+70.0; //
+  //outOrigin[1] = extendVolume[2]-150.0;
+  //outOrigin[2] = extendVolume[4]-250;
+
+  //outOrigin[0] = extendVolume[0]+120.0; //initalShortSweep3
+  //outOrigin[1] = extendVolume[2]+50.0;
+  //outOrigin[2] = extendVolume[4]-300.0;
   
   /*outOrigin[0] = -300;
   outOrigin[1] = -180;
@@ -166,6 +187,9 @@ int main(int argc, char** argv)
     return EXIT_FAILURE;
   }
 
+  // set origin back to (0,0,0) 
+  maskOrigin.Fill( 0.0 );
+  maskFrame->SetOrigin( maskOrigin );
 
   // iterate through the input image stag
   for( int itr = 0; itr < frames->GetNumberOfTrackedFrames(); itr++)
@@ -181,7 +205,7 @@ int main(int argc, char** argv)
     double time = frame->GetTimestamp();
     transform->SetIdentity();
     transform->SetMatrix( vtkMatrix4x4ToItkRotMatrix(transformMatrix) );
-    transform->SetOffset( vtkMatrix4x4ToItkOffset(transformMatrix) );
+    transform->SetTranslation( vtkMatrix4x4ToItkOffset(transformMatrix) );
 
     // iterate through all pixel in input slice 
     inIterator2dType inItr( itkFrame2D, itkFrame2D->GetLargestPossibleRegion() );
@@ -222,7 +246,7 @@ int main(int argc, char** argv)
   typedef itk::DiscreteGaussianImageFilter<Float3dImageType, Float3dImageType> GaussianFilterType;
   GaussianFilterType::Pointer iBlurrer = GaussianFilterType::New();
   GaussianFilterType::Pointer cBlurrer = GaussianFilterType::New();
-  double variance = 20;
+  double variance = 300;
   iBlurrer->SetVariance( variance );
   cBlurrer->SetVariance( variance );
   iBlurrer->SetInput( imap );//iCaster->GetOutput()
@@ -343,7 +367,7 @@ itk::Euler3DTransform<double>::OffsetType vtkMatrix4x4ToItkOffset( vtkSmartPoint
   return translation;
 }
 
-std::vector<double> computeExtent( vtkSmartPointer<vtkTrackedFrameList> frames )
+std::vector<double> computeExtent( vtkSmartPointer<vtkTrackedFrameList> frames, vtkSmartPointer<vtkMatrix4x4> globalTransformMatrix )
 {
   std::vector<double> returnValues;
   std::vector<double> minExtend(3, 1000), maxExtend(3, -1000);
@@ -363,6 +387,13 @@ std::vector<double> computeExtent( vtkSmartPointer<vtkTrackedFrameList> frames )
   vtkSmartPointer<vtkMatrix4x4> transformMatrix = vtkSmartPointer<vtkMatrix4x4>::New();
   typedef itk::AffineTransform<double> TransformTyp;
   TransformTyp::Pointer transform = TransformTyp::New();
+  TransformTyp::Pointer transformGlobal = TransformTyp::New();
+  transformGlobal->SetMatrix( vtkMatrix4x4ToItkRotMatrix(globalTransformMatrix) );
+  transformGlobal->SetTranslation( vtkMatrix4x4ToItkOffset(globalTransformMatrix) );
+
+  typedef itk::CompositeTransform<double,3> TransformCombiner;
+  TransformCombiner::Pointer combiner = TransformCombiner::New();
+ 
 
   for (int itr = 0; itr < frames->GetNumberOfTrackedFrames(); ++itr )
   {
@@ -371,18 +402,24 @@ std::vector<double> computeExtent( vtkSmartPointer<vtkTrackedFrameList> frames )
     frames->GetTrackedFrame( itr )->GetCustomFrameTransform( transformNames[0], transformMatrix);
 
     transform->SetMatrix( vtkMatrix4x4ToItkRotMatrix(transformMatrix) );
-    transform->SetOffset( vtkMatrix4x4ToItkOffset(transformMatrix) );
+    transform->SetTranslation( vtkMatrix4x4ToItkOffset(transformMatrix) );
+
+    //combiner->AddTransform( transformGlobal->GetInverseTransform() );
+    combiner->AddTransform( transform );
+    //
+    
 
     // loop through the 4 land mark points and check limits
     for ( int ptItr = 0; ptItr < 4; ++ptItr )
     {
-      outPt = transform->TransformPoint( pts[ptItr] );
+      outPt = combiner->TransformPoint( pts[ptItr] );
       for ( int compItr = 0; compItr < 3; ++compItr )
       {
         minExtend[compItr] = std::min( minExtend[compItr], outPt[compItr]);
         maxExtend[compItr] = std::max( maxExtend[compItr], outPt[compItr]);
       }
     }
+    combiner->ClearTransformQueue();
   }
   returnValues.push_back( minExtend[0] ); returnValues.push_back( maxExtend[0] );
   returnValues.push_back( minExtend[1] ); returnValues.push_back( maxExtend[1] );
